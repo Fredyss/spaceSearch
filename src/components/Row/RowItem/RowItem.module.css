@@ -1,0 +1,38 @@
+.rowItem {
+  margin: 0 12px;
+  border-radius: 4px;
+  width: 185px;
+  height: 314px;
+  cursor: pointer;
+}
+
+.noImgsDivStyle  {
+  color: white;
+  background-color: darkgray;
+  height:88%;
+  border-radius: 3px;
+};
+
+.actionBarStyle {
+  display: flex;
+  grid-template-columns: 50% 50%;
+}
+
+@media (min-width: 760px) {
+  .rowItem {
+    transition: all .2s ease-in-out;
+  }
+
+  .actionBarStyle {
+    display: none;
+  }
+
+  .rowItem:hover {
+    transform: scale(1.2, 1.1);
+  }
+
+  .rowItem:hover .actionBarStyle {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
