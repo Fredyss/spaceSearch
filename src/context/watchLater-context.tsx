@@ -5,7 +5,7 @@ import { Movie } from '../shared/globals/Globals';
 export const WatchLaterContext = React.createContext({
   watchLaterList: [],
   addMovie: (movie: any) => movie,
-  removeMovie: (movie: any) => movie,
+  removeMovie: (movie: any) => movie
 });
 
 interface props {
@@ -13,7 +13,7 @@ interface props {
 }
 const WatchLaterContextProvider = (props: props) => {
   const [watchLaterList, setWatchLaterList] = useState([]);
-  
+
   const watchLaterHandler = (movie: Movie, action: string) => {
     let temp = [] as any;
     switch (action) {
@@ -23,17 +23,15 @@ const WatchLaterContextProvider = (props: props) => {
         if (foundMovie) break;
         temp.push(movie);
         setWatchLaterList(temp);
-        notify("Added to watch later");
+        notify('Added to watch later');
         break;
 
       case 'remove':
         temp = watchLaterList;
-        const indexToDel = temp.findIndex(
-          (item: Movie) => item.id === movie.id
-        );
+        const indexToDel = temp.findIndex((item: Movie) => item.id === movie.id);
         temp.splice(indexToDel, 1);
         setWatchLaterList(temp);
-        notify("Removed from watch later");
+        notify('Removed from watch later');
         break;
 
       default:
@@ -45,8 +43,8 @@ const WatchLaterContextProvider = (props: props) => {
     <WatchLaterContext.Provider
       value={{
         watchLaterList: watchLaterList,
-        addMovie: (data) => watchLaterHandler(data, 'add'),
-        removeMovie: (data) => watchLaterHandler(data, 'remove'),
+        addMovie: data => watchLaterHandler(data, 'add'),
+        removeMovie: data => watchLaterHandler(data, 'remove')
       }}
     >
       {props.children}

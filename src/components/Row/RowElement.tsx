@@ -6,23 +6,26 @@ const divStyle = {
   display: 'flex',
   overflow: 'auto',
   margin: '0rem 2rem',
-  padding: '18px 5px',
+  padding: '18px 5px'
 };
 
 type Props = {
-  itemData: any;
+  itemData: Array<Movie>;
   videoHandler?: (data: Movie) => void;
 };
 
-export const RowElement = (props: Props) => {
+export const RowElement = ({ itemData, videoHandler }: Props) => {
   return (
     <section style={divStyle}>
-      {props.itemData.map((item: any, key: number) => (
-        <div key={key} onClick={() =>{
-          if(props.videoHandler) {
-            props.videoHandler(item)
-         }
-        } }>
+      {itemData.map((item: any, key: number) => (
+        <div
+          key={key}
+          onClick={() => {
+            if (videoHandler) {
+              videoHandler(item);
+            }
+          }}
+        >
           <RowItem data={item} />
         </div>
       ))}

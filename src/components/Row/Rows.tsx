@@ -4,7 +4,7 @@ import { RowElement } from './RowElement';
 
 const divHeadStyle = {
   color: 'whitesmoke',
-  padding: '8px',
+  padding: '8px'
 };
 
 type Props = {
@@ -13,14 +13,14 @@ type Props = {
   videoHandler?: (data: Movie) => void;
 };
 
-export const Rows = (props: Props) => {
+export const Rows = ({ type, data, videoHandler }: Props) => {
   return (
     <div>
-      {props.data ? (
+      {data ? (
         <React.Fragment>
-          <div style={divHeadStyle}>{props.type}</div>
+          <div style={divHeadStyle}>{type}</div>
 
-          <RowElement itemData={props.data} videoHandler={props.videoHandler}/>
+          <RowElement itemData={data} videoHandler={videoHandler} />
         </React.Fragment>
       ) : (
         ''

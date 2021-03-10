@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  getTopRatedMovies,
-  getPopularMovies,
-  getUpcomingMovies,
-} from '../../api/Movies';
+import { getTopRatedMovies, getPopularMovies, getUpcomingMovies } from '../../api/Movies';
 import { MovieGrid } from '../../components/MovieGrid/MovieGrid';
 import { Rows } from '../../components/Row/Rows';
 import { SearchContext } from '../../context/search-context';
@@ -13,8 +9,8 @@ import VideoPlayer from '../VideoPlayer/VideoPlayer';
 const playerStyle = {
   width: '100%',
   minHeight: '480px',
-  maxHeight: "720px"
-}
+  maxHeight: '720px'
+};
 
 export const Home = () => {
   const searchContext = useContext(SearchContext);
@@ -27,26 +23,26 @@ export const Home = () => {
 
   useEffect(() => {
     async function fetchData() {
-      getTopRatedMovies(async (response) => {
+      getTopRatedMovies(async response => {
         const res = await response;
         setTopRated(res.data.results);
         return res;
       });
 
-      getPopularMovies(async (response) => {
+      getPopularMovies(async response => {
         const res = await response;
         getPopular(res.data.results);
         return res;
       });
 
-      getUpcomingMovies(async (response) => {
+      getUpcomingMovies(async response => {
         const res = await response;
         getUpcoming(res.data.results);
         return res;
       });
     }
     fetchData();
-    setSelectedMovie({})
+    setSelectedMovie({});
   }, [setSelectedMovie]);
 
   const movieHandler = (movie: Movie) => {
@@ -60,13 +56,12 @@ export const Home = () => {
           <VideoPlayer data={movie} />
         </div>
       )}
-      <Rows data={topRated} type="Top rated" videoHandler={movieHandler} />
-      <Rows data={popular} type="Popular" videoHandler={movieHandler} />
-      <Rows data={upcoming} type="Upcoming" videoHandler={movieHandler} />
+      <Rows data={topRated} type='Top rated' videoHandler={movieHandler} />
+      <Rows data={popular} type='Popular' videoHandler={movieHandler} />
+      <Rows data={upcoming} type='Upcoming' videoHandler={movieHandler} />
     </div>
   );
 
-  if (searchContext.result.length)
-    content = <MovieGrid data={searchContext.result} />;
+  if (searchContext.result.length) content = <MovieGrid data={searchContext.result} />;
   return content;
 };

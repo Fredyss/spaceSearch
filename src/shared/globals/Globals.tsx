@@ -1,5 +1,9 @@
 // https://api.themoviedb.org/3/
-export const API_TARGET = "https://api.themoviedb.org/3/"
+export const API_TARGET = 'https://api.themoviedb.org/3/';
+
+export interface MovieList {
+  data: Array<Movie>;
+}
 
 export interface Movie {
   adult: false;

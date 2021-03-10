@@ -1,23 +1,19 @@
 import React from 'react';
-import { Movie } from '../../shared/globals/Globals';
+import { Movie, MovieList } from '../../shared/globals/Globals';
 import { RowItem } from '../Row/RowItem/RowItem';
 
 const divStyle = {
   display: 'grid',
-  margin: "2px",
+  margin: '2px',
   gridTemplateColumns: 'repeat(auto-fill, 210px)'
-}
-
-type Props = {
-  data: any
 };
 
-export const MovieGrid = (props: Props) => {
+export const MovieGrid = (props: MovieList) => {
   return (
     <div style={divStyle}>
-      {props.data.map((item: Movie, key: number) => 
-        <RowItem  key={key} data={item}/>
-      )}
+      {props.data.map((item: Movie, key: number) => (
+        <RowItem key={key} data={item} />
+      ))}
     </div>
   );
 };

@@ -14,34 +14,34 @@ const useStyles = makeStyles(() =>
       flexDirection: 'row',
       borderTop: '1px solid gray',
       borderBottom: '1px solid gray',
-      borderRadius: '3px',
+      borderRadius: '3px'
     },
     root: {
       width: '100%',
       color: 'whitesmoke',
-      backgroundColor: 'black',
+      backgroundColor: 'black'
     },
     item: {
-      margin: '8px',
+      margin: '8px'
     },
     section: {
-      margin: '0 5px',
+      margin: '0 5px'
     },
     actions: {
       display: 'flex',
       flexDirection: 'column',
       margin: '0',
-      padding: '0',
+      padding: '0'
     },
     button: {
       height: '24px',
-      width: '24px',
-    },
+      width: '24px'
+    }
   })
 );
 
 type Props = {
-  data: any;
+  data: Array<Movie>;
   videoHandler?: (data: Movie) => void;
   movieHandler: (data: Movie, type: string) => void;
 };
@@ -52,8 +52,7 @@ export const MovieList = (props: Props) => {
   return (
     <List dense className={classes.root}>
       {props.data.map((value: Movie, key: number) => {
-        const imgPath =
-          'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + value.poster_path;
+        const imgPath = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2' + value.poster_path;
 
         return (
           <div className={classes.div}>
@@ -81,16 +80,16 @@ export const MovieList = (props: Props) => {
                 onClick={() => {
                   props.movieHandler(value, 'watchLater');
                 }}
-                variant="contained"
-                color="secondary"
+                variant='contained'
+                color='secondary'
                 startIcon={<DeleteIcon />}
               ></Button>
               <Button
                 onClick={() => {
                   props.movieHandler(value, 'favourites');
                 }}
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 startIcon={<StarIcon />}
               ></Button>
             </div>
