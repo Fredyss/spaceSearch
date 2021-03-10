@@ -18,8 +18,7 @@ export const WatchLater = () => {
   const [movies, setMovies] = useState(watchLaterContext.watchLaterList);
 
   const fetchData = useCallback(() => {
-    setMovies([]);
-    setMovies(watchLaterContext.watchLaterList);
+    setMovies([...watchLaterContext.watchLaterList]);
   }, [watchLaterContext]);
 
   const videoHandle = (movie: Movie) => {
@@ -33,9 +32,7 @@ export const WatchLater = () => {
   };
 
   let container = (
-    <div style={{ color: 'white', margin: '10% 40%' }}>
-      No watch later movies yet
-    </div>
+    <div style={{ color: 'white', margin: '10% 40%' }}>No watch later movies yet</div>
   );
 
   const movieHandler = (movie: Movie, type: string) => {
@@ -59,7 +56,7 @@ export const WatchLater = () => {
       <div className={classes.container}>
         <MovieList
           data={movies}
-          videoHandler={(movie) => videoHandle(movie)}
+          videoHandler={movie => videoHandle(movie)}
           movieHandler={movieHandler}
         />
 
@@ -68,7 +65,6 @@ export const WatchLater = () => {
         </div>
       </div>
     );
-  if (searchContext.result.length)
-    container = <MovieGrid data={searchContext.result} />;
+  if (searchContext.result.length) container = <MovieGrid data={searchContext.result} />;
   return container;
 };
