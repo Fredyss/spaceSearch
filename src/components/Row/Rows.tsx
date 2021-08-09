@@ -1,11 +1,7 @@
 import React from 'react';
 import { Movie } from '../../shared/globals/Globals';
 import { RowElement } from './RowElement';
-
-const divHeadStyle = {
-  color: 'whitesmoke',
-  padding: '8px'
-};
+import useStyles from './Rows.styles';
 
 type Props = {
   type: string; //popular, top rated, etc
@@ -14,17 +10,18 @@ type Props = {
 };
 
 export const Rows = ({ type, data, videoHandler }: Props) => {
+  const styles = useStyles();
   return (
-    <div>
+    <>
       {data ? (
         <React.Fragment>
-          <div style={divHeadStyle}>{type}</div>
+          <div className={styles.divHeadStyle}>{type}</div>
 
           <RowElement itemData={data} videoHandler={videoHandler} />
         </React.Fragment>
       ) : (
         ''
       )}
-    </div>
+    </>
   );
 };

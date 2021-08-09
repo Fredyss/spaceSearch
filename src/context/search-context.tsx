@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { searchMovie } from '../api/Movies';
 
 export const SearchContext = React.createContext({
-  searchedValue: '',
+  searchedValue: "",
   searchHandle: (event: any) => event,
   result: []
 });
 
 interface props {
-  children: any;
+  children: ReactNode;
 }
-const SearchContextProvider = (props: props) => {
+
+const SearchContextProvider = ({ children }: props) => {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([])
 
@@ -38,7 +39,7 @@ const SearchContextProvider = (props: props) => {
         result: searchResult
       }}
     >
-      {props.children}
+      {children}
     </SearchContext.Provider>
   );
 };

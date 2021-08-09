@@ -1,29 +1,26 @@
 import React, { useContext } from 'react';
+import { useMediaQuery, useTheme } from '@material-ui/core';
 import { SearchContext } from '../../context/search-context';
+import DesktopNavigation from './DesktopNavigation';
+import MobileNavigation from './MobileNavigation';
 
-import styles from './Navigation.module.css';
-import { NavigationItems } from './NavigationItems/NavigationItems';
-
-const inputSearchStyle = {
-  border: '4px solid smokewhite',
-  backgroundColor: 'black',
-  minWidth: '80px',
-  width: '80%',
-  color: 'white',
-  borderRadius: '4px',
-  margin: '10px',
-};
+import useStyles from './navigation.styles';
 
 export const Navigation = () => {
-  const searchContext = useContext(SearchContext);
+  const theme = useTheme();
+  const searchContext = useContext(SearchContext);  
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const styles = useStyles();
+
 
   return (
     <div className={styles.navigation}>
-      <NavigationItems />
+
+      {!matches ? <MobileNavigation /> : <DesktopNavigation />}
 
       <input
         id="searchBox"
-        style={inputSearchStyle}
+        className={styles.inputSearch}
         placeholder="Search movies..."
         onChange={(event) =>
           setTimeout(() => searchContext.searchHandle(event.target.value), 1000)

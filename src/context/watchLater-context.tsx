@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { notify } from '../shared/globals/GlobalFunctions';
 import { Movie } from '../shared/globals/Globals';
 
@@ -9,12 +9,13 @@ export const WatchLaterContext = React.createContext({
 });
 
 interface props {
-  children: any;
+  children: ReactNode;
 }
-const WatchLaterContextProvider = (props: props) => {
+
+const WatchLaterContextProvider = ({ children }: props) => {
   const [watchLaterList, setWatchLaterList] = useState([]);
 
-  const watchLaterHandler = (movie: Movie, action: string) => {
+  const watchLaterHandler = (movie: Movie, action: string): void => {
     let temp = [] as any;
     switch (action) {
       case 'add':
@@ -47,7 +48,7 @@ const WatchLaterContextProvider = (props: props) => {
         removeMovie: data => watchLaterHandler(data, 'remove')
       }}
     >
-      {props.children}
+      {children}
     </WatchLaterContext.Provider>
   );
 };

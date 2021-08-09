@@ -2,13 +2,15 @@ import React, { useContext } from 'react';
 import { MovieGrid } from '../../components/MovieGrid/MovieGrid';
 import { FavouritesContext } from '../../context/favourites-context';
 import { SearchContext } from '../../context/search-context';
+import useStyles from './Favourites.styles';
 
 export const Favourites = () => {
+  const styles = useStyles();
   const favouritesContext = useContext(FavouritesContext);
   const searchContext = useContext(SearchContext);
 
   let content = (
-    <div style={{ color: 'white', margin: '10% 40%' }}>
+    <div className={styles.content}>
       No favourites movies yet
     </div>
   );

@@ -5,12 +5,8 @@ import { Rows } from '../../components/Row/Rows';
 import { SearchContext } from '../../context/search-context';
 import { Movie } from '../../shared/globals/Globals';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import useStyles from './Home.styles';
 
-const playerStyle = {
-  width: '100%',
-  minHeight: '480px',
-  maxHeight: '720px'
-};
 
 export const Home = () => {
   const searchContext = useContext(SearchContext);
@@ -19,6 +15,7 @@ export const Home = () => {
   const [popular, getPopular] = useState([]);
   const [upcoming, getUpcoming] = useState([]);
 
+  const styles = useStyles();
   const [movie, setSelectedMovie] = useState({});
 
   useEffect(() => {
@@ -52,7 +49,7 @@ export const Home = () => {
   let content = (
     <div>
       {Object.keys(movie).length && (
-        <div style={playerStyle}>
+        <div className={styles.playerStyle}>
           <VideoPlayer data={movie} />
         </div>
       )}

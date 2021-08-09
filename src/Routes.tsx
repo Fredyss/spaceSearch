@@ -1,7 +1,8 @@
 import { Route, Switch } from 'react-router-dom';
-import { Home } from "./containers/Home/Home"
-import { WatchLater } from "./containers/WatchLater/WatchLater"
-import { Favourites } from './containers/Favourites/Favourites';
+
+import Home from './containers/Home';
+import Favourites from './containers/Favourites';
+import WatchLater from './containers/WatchLater';
 
 export const Routes = (
   <Switch>

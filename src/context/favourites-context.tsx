@@ -8,10 +8,10 @@ export const FavouritesContext = React.createContext({
   removeMovie: (movie: any) => movie
 });
 
-interface props {
+interface FavouritesContextProps {
   children: any;
 }
-const FavouritesContextProvider = (props: props) => {
+const FavouritesContextProvider = ({ children }: FavouritesContextProps) => {
   const [favourites, setFavourites] = useState([]);
 
   const favouritesHandler = (movie: Movie, action: string) => {
@@ -47,7 +47,7 @@ const FavouritesContextProvider = (props: props) => {
         removeMovie: data => favouritesHandler(data, 'remove')
       }}
     >
-      {props.children}
+      {children}
     </FavouritesContext.Provider>
   );
 };
