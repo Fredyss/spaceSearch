@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ReactNode } from "react";
 import { notify } from "../shared/globals/GlobalFunctions";
 import { Movie } from "../shared/globals/Globals";
 
@@ -9,7 +10,7 @@ export const FavouritesContext = React.createContext({
 });
 
 interface FavouritesContextProps {
-	children: any;
+	children: ReactNode;
 }
 const FavouritesContextProvider = ({ children }: FavouritesContextProps) => {
 	const [favourites, setFavourites] = useState([]);

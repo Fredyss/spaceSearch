@@ -1,6 +1,6 @@
 import React from "react";
 import { Movie } from "../../shared/globals/Globals";
-import { RowElement } from "./RowElement";
+import { RowElement } from "./RowElement/RowElement";
 import useStyles from "./Rows.styles";
 
 type Props = {
@@ -14,11 +14,11 @@ export const Rows = ({ type, data, videoHandler }: Props): JSX.Element => {
 	return (
 		<>
 			{data ? (
-				<React.Fragment>
+				<>
 					<div className={styles.divHeadStyle}>{type}</div>
 
 					<RowElement itemData={data} videoHandler={videoHandler} />
-				</React.Fragment>
+				</>
 			) : (
 				""
 			)}

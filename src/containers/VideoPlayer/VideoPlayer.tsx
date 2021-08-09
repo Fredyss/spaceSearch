@@ -10,15 +10,14 @@ type VideoProps = {
 export const Video = ({ data }: VideoProps): JSX.Element => {
 	const [video, setVideo] = useState("");
 
-	console.log(data);
 	useEffect(() => {
-		async function fetchData() {
+		const fetchData = async () => {
 			getVideo(String(data.id), async (response) => {
 				const res = await response;
 				if (res.data.results[0]) setVideo(res.data.results[0].key);
 				return res;
 			});
-		}
+		};
 
 		if (data.id) {
 			fetchData();
