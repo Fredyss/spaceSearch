@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { getVideo } from "../../api/Movies";
+import { Movie } from "../../shared/globals/Globals";
 
-type Props = {
-	data: any;
+type VideoProps = {
+	data: Movie;
 };
 
-export const Video = (props: Props) => {
+export const Video = ({ data }: VideoProps): JSX.Element => {
 	const [video, setVideo] = useState("");
 
+	console.log(data);
 	useEffect(() => {
 		async function fetchData() {
-			getVideo(props.data.id, async (response) => {
+			getVideo(String(data.id), async (response) => {
 				const res = await response;
 				if (res.data.results[0]) setVideo(res.data.results[0].key);
 				return res;
 			});
 		}
 
-		if (props.data.id) {
+		if (data.id) {
 			fetchData();
 		}
-	}, [props.data]);
+	}, [data]);
 
 	return (
 		<React.Fragment>

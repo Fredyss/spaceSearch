@@ -3,7 +3,7 @@ import { Movie, MovieList } from "../../shared/globals/Globals";
 import { RowItem } from "../Row/RowItem/RowItem";
 import useStyles from "./MovieGrid.styles";
 
-export const MovieGrid = (props: MovieList) => {
+export const MovieGrid = (props: MovieList): JSX.Element => {
 	const styles = useStyles();
 
 	return (

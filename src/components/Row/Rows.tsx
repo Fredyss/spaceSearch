@@ -9,7 +9,7 @@ type Props = {
 	videoHandler?: (data: Movie) => void;
 };
 
-export const Rows = ({ type, data, videoHandler }: Props) => {
+export const Rows = ({ type, data, videoHandler }: Props): JSX.Element => {
 	const styles = useStyles();
 	return (
 		<>

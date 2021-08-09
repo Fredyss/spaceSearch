@@ -13,7 +13,7 @@ export interface MovieListProps {
 	movieHandler: (data: Movie, type: string) => void;
 }
 
-export const MovieList = ({ data, videoHandler, movieHandler }: MovieListProps) => {
+export const MovieList = ({ data, videoHandler, movieHandler }: MovieListProps): JSX.Element => {
 	const classes = useStyles();
 
 	return (

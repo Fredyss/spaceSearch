@@ -7,7 +7,7 @@ import { Movie } from "../../shared/globals/Globals";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import useStyles from "./Home.styles";
 
-export const Home = () => {
+export const Home = (): JSX.Element => {
 	const searchContext = useContext(SearchContext);
 
 	const [topRated, setTopRated] = useState([]);
@@ -49,7 +49,7 @@ export const Home = () => {
 		<div>
 			{Object.keys(movie).length && (
 				<div className={styles.playerStyle}>
-					<VideoPlayer data={movie} />
+					<VideoPlayer data={movie as Movie} />
 				</div>
 			)}
 			<Rows data={topRated} type="Top rated" videoHandler={movieHandler} />

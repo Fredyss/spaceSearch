@@ -4,7 +4,7 @@ import { FavouritesContext } from "../../context/favourites-context";
 import { SearchContext } from "../../context/search-context";
 import useStyles from "./Favourites.styles";
 
-export const Favourites = () => {
+export const Favourites = (): JSX.Element => {
 	const styles = useStyles();
 	const favouritesContext = useContext(FavouritesContext);
 	const searchContext = useContext(SearchContext);

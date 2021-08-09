@@ -14,7 +14,7 @@ type Props = {
 	videoHandler?: (data: Movie) => void;
 };
 
-export const RowElement = ({ itemData, videoHandler }: Props) => {
+export const RowElement = ({ itemData, videoHandler }: Props): JSX.Element => {
 	return (
 		<section style={divStyle}>
 			{itemData.map((item: any, key: number) => (

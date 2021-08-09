@@ -6,7 +6,7 @@ import MobileNavigation from "./MobileNavigation";
 
 import useStyles from "./navigation.styles";
 
-export const Navigation = () => {
+export const Navigation = (): JSX.Element => {
 	const theme = useTheme();
 	const searchContext = useContext(SearchContext);
 	const matches = useMediaQuery(theme.breakpoints.up("sm"));

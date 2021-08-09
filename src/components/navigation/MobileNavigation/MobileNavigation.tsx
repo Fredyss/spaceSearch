@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import { Button, Menu, MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -8,7 +8,7 @@ export const MobileNavigation = (): JSX.Element => {
 	const styles = useStyles();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+	const handleClick = (event: MouseEvent<HTMLElement>) => {
 		if (anchorEl !== event.currentTarget) {
 			setAnchorEl(event.currentTarget);
 		}

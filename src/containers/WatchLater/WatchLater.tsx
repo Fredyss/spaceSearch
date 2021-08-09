@@ -9,7 +9,7 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 import classes from "./WatchLater.module.css";
 
-export const WatchLater = () => {
+export const WatchLater = (): JSX.Element => {
 	const watchLaterContext = useContext(WatchLaterContext);
 	const searchContext = useContext(SearchContext);
 	const favouritesContext = useContext(FavouritesContext);
@@ -55,10 +55,11 @@ export const WatchLater = () => {
 				<MovieList data={movies} videoHandler={(movie) => videoHandle(movie)} movieHandler={movieHandler} />
 
 				<div className={classes.player}>
-					<VideoPlayer data={selectedMovie} />
+					<VideoPlayer data={selectedMovie as Movie} />
 				</div>
 			</div>
 		);
 	if (searchContext.result.length) container = <MovieGrid data={searchContext.result} />;
+
 	return container;
 };
